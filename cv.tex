@@ -1,0 +1,120 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Times New Roman}
+
+\usepackage{url}
+\usepackage{parskip} 	
+\usepackage{needspace}
+\usepackage{longtable}
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{booktabs}
+\usepackage[italian]{babel}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{5pt}{5pt}
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}  % Keep this if you have a citations.bib file, otherwise remove.
+\setlength\bibitemsep{1em}
+\usepackage{fontawesome5}
+
+\usepackage[
+    a4paper,
+    left=1cm,
+    right=1cm,
+    top=1cm,
+    bottom=1cm,
+    nohead,
+    nofoot
+]{geometry}
+
+\newcommand{\customitem}[1]{\item[--] #1}
+
+\begin{document}
+\raggedbottom
+\pagestyle{empty} 
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Sofia Bianchi} \\[7.5pt]
+\href{https://example.com/sofia}{\raisebox{-0.05\height}\faGlobe \ example.com/sofia} \ $|$ \ 
+\href{mailto:sofia.bianchi@email.com}{\raisebox{-0.05\height}\faEnvelope \ sofia.bianchi@email.com} \ $|$ \ 
+\href{tel:+391234567890}{\raisebox{-0.05\height}\faMobile \ (+39)1234567890} \\[7.5pt]
+\textbf{Posizione:} Roma, Italia \ $|$ \ \textbf{Data di Nascita:} 15 Marzo 1995 \ $|$ \ \textbf{P.IVA:} 98765432101 \\[7.5pt]
+\textbf{Ultimo aggiornamento:} \today\\
+\end{tabularx}
+
+\section{Sommario}
+Consulente IT con esperienza nello sviluppo di applicazioni web e soluzioni di database per diverse industrie.
+
+\section{Esperienza}
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+\textbf{Consulente IT Freelance} & & 2019 - presente \\[3.75pt]
+\end{tabularx}
+
+\section{Progetti}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Progetto Esempio} & \hfill \href{https://exampleproject.com}{exampleproject.com} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Applicazione web sviluppata in Python e Django per la gestione di inventario.  Include funzionalità per il tracciamento degli articoli, la generazione di report e la gestione degli utenti.}  \\
+\end{tabularx}
+
+\section{Formazione}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Diploma di Istruzione Tecnica Superiore in Informatica} \hfill 2014\\
+    \textit{Istituto Tecnico Industriale Esempio, Milano}
+    \item \textbf{Laurea Triennale in Scienze della Comunicazione} \hfill 2018\\
+    \textit{Università degli Studi di Roma "La Sapienza"}
+\end{itemize}
+
+\section{Certificazioni}
+\begin{itemize}[leftmargin=*,itemsep=3pt,parsep=0pt]
+\item \textbf{\href{https://example.com/cert1}{Certificazione Esempio 1}} \hfill \textnormal{Provider Esempio, Gen 2023}
+\item \textbf{\href{https://example.com/cert2}{Certificazione Esempio 2}} \hfill \textnormal{Provider Esempio, Feb 2022}
+\item \textbf{\href{https://example.com/cert3}{Certificazione Esempio 3}} \hfill \textnormal{Provider Esempio, Mar 2021}
+\item \textbf{\href{https://example.com/cert4}{Certificazione Esempio 4}} \hfill \textnormal{Provider Esempio, Apr 2020}
+\end{itemize}
+
+\section{Competenze}
+\noindent\textbf Sviluppo Web (HTML, CSS, JavaScript, Python, Django), Database (SQL, NoSQL), Cloud Computing, Analisi Dati, Consulenza IT.
+
+\section{Lingue}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Italiano} & Madrelingua \\
+\textbf{Inglese} & Livello Intermedio (B2) \\
+\end{tabularx}
+
+\section{Referenze}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Marco Rossi} & \hfill 10 Maggio 2024 \\[3.75pt]
+\textit{Project Manager presso \href{https://examplecompany.com/}{Azienda Esempio}} & \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+        \item[--] \textit{"Sofia ha dimostrato grande competenza tecnica e capacità di problem-solving. Ha contribuito in modo significativo al successo del nostro progetto, fornendo soluzioni innovative e rispettando le scadenze."}
+    \end{itemize}
+    \vspace{10pt}
+    \textit{Profilo LinkedIn:} \href{https://www.linkedin.com/in/marco-rossi}{Marco Rossi}
+    \end{minipage}
+}
+\end{tabularx}
+
+\vspace{10pt}
+
+\noindent
+\textbf{Ulteriori referenze sono disponibili su richiesta.}
+
+\end{document}
