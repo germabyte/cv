@@ -1,76 +1,161 @@
-# LaTeX CV Compiler
+# 📄 LaTeX CV Compiler
 
-This repository provides a Python-based graphical interface and PowerShell script to automate the process of compiling a LaTeX CV (`cv.tex`) file into a PDF. The system offers a straightforward, user-friendly method for compiling LaTeX documents and managing the generated output.
+## 1. Introduction and Purpose
 
-## Features
+### 🎯 Introduction  
+This program provides a simple, user-friendly graphical interface for compiling a LaTeX-based CV (`cv.tex`) using PowerShell and XeLaTeX. It automates the compilation process by executing a PowerShell script that generates a clean, formatted PDF from your LaTeX file.
 
-- **Graphical Interface**: A Python Tkinter GUI enables users to select the project directory and run the compilation process without using the command line.
-- **Automated Compilation**: The PowerShell script compiles the LaTeX `cv.tex` file using XeLaTeX and cleans up temporary files, ensuring the output folder only contains the final PDF.
-- **Cross-Platform**: While the PowerShell script is tailored for Windows, the Python GUI can run on any system that supports Tkinter, with minor adjustments for Linux/macOS.
+### ❓ Purpose & Problem Statement  
+Manually compiling LaTeX documents on Windows can be cumbersome, especially when involving multiple passes and file clean-up. This tool solves that by letting users:
 
-## Prerequisites
+- Select their LaTeX project folder.
+- Automatically run a PowerShell script to compile the CV using `xelatex`.
+- Clean up unnecessary files afterward — all with the click of a button.
 
-Before using the system, ensure the following software is installed:
+### ✅ Value Proposition  
+- **No command-line knowledge needed.**  
+- **Clean and organized output:** All non-PDF files are automatically removed.  
+- **Error handling and logging included.**  
+- **Ideal for Windows users managing their CVs in LaTeX.**
 
-1. **XeLaTeX**: A LaTeX distribution (e.g., MiKTeX or TeX Live) with support for XeLaTeX. Verify installation by running:
+---
+
+## 2. Dependencies (Required Software/Libraries)
+
+The following dependencies are required to run this program effectively:
+
+### 🐍 Python
+- **Exact Name:** Python 3.x  
+- **Description:** Required to run the GUI-based script (`latex_cv_compiler.py`).  
+- **Installation:**  
+  Download and install Python from the official website:  
+  👉 https://www.python.org/downloads/
+
+### 🧰 tkinter
+- **Exact Name:** `tkinter`  
+- **Description:** Used to create the graphical interface (GUI).  
+- **Installation:**  
+  Usually included with standard Python installations. If missing, install using:  
+  ```bash
+  sudo apt-get install python3-tk  # (Linux)
+  ```
+
+### 💻 Windows PowerShell
+- **Exact Name:** PowerShell (with administrator privileges)  
+- **Description:** Required to execute the `script.ps1` which performs the LaTeX compilation.  
+- **Installation:**  
+  PowerShell is included by default on most Windows systems.  
+  To manually update: https://learn.microsoft.com/en-us/powershell/
+
+### 🧾 XeLaTeX (from TeX distribution)
+- **Exact Name:** `xelatex` (included in full TeX distributions)  
+- **Description:** Compiles the `cv.tex` file into a PDF.  
+- **Installation:**  
+  Install a full TeX distribution such as:  
+  👉 [MiKTeX (Windows)](https://miktex.org/download)  
+  👉 [TeX Live (Cross-platform)](https://www.tug.org/texlive/)
+
+---
+
+## 3. Getting Started (Installation & Execution)
+
+### 🔽 Download the Repository
+1. Click the green "**<> Code**" button on the GitHub page.  
+2. Select "**Download ZIP**".  
+3. Extract the downloaded ZIP file to a convenient location.
+
+### ▶️ Run the Program
+
+#### Step-by-step Instructions:
+
+1. **Open Command Prompt:**
+   - Press `Win + R`, type `cmd`, and press Enter.
+
+2. **Navigate to the Extracted Directory:**
+   Use the `cd` command to change to the program folder:  
    ```bash
-   xelatex --version
-   ```
-2. **Python 3.x**: Required to run the `latex_cv_compiler.py` script. Install it from the [official Python website](https://www.python.org/downloads/).
-3. **Tkinter**: Bundled with most Python installations. Confirm its installation by attempting to import it in a Python shell:
-   ```python
-   import tkinter
+   cd path\to\extracted\folder
    ```
 
-## Usage
-
-### Step 1: Download the Repository
-
-Download this repository as a ZIP file by clicking the **"Code"** button at the top of the repository page on GitHub and selecting **"Download ZIP"**. Extract the contents of the ZIP file to a folder on your computer.
-
-### Step 2: Prepare Your LaTeX File
-
-Ensure your LaTeX file (`cv.tex`) is in the extracted folder. Verify that the `script.ps1` file is also in the same directory. This script will handle the compilation process.
-
-### Step 3: Run the Python GUI
-
-1. Open a terminal or command prompt and navigate to the folder where the repository was extracted.
-2. Run the Python script to open the graphical interface:
+3. **Run the Python Script:**
    ```bash
    python latex_cv_compiler.py
    ```
 
-### Step 4: Select the Project Directory
+> 🔒 **Note:** The PowerShell script requires administrator privileges to run correctly.
 
-In the GUI:
-1. Click the **"Select Project Directory"** button.
-2. Navigate to the folder containing both `cv.tex` and `script.ps1`.
-3. The selected directory path will appear in the GUI window.
+---
 
-### Step 5: Compile the LaTeX CV
+## 4. User Guide (How to Effectively Use the Program)
 
-Once the project directory is selected:
-1. Click the **"Run Compilation Script"** button.
-2. The PowerShell script will execute the LaTeX compilation process.
-3. Monitor the log output in the GUI for progress and any potential errors.
+### 🧭 Program Flow:
 
-The final PDF will be placed in an `output` folder within the project directory. Non-PDF files will be automatically removed after compilation.
+1. **Click "Select Project Directory":**  
+   - Choose a folder that contains both:
+     - `cv.tex` — your LaTeX CV document.
+     - `script.ps1` — the provided PowerShell compilation script.
 
-### Output Files
+2. **Click "Run Compilation Script":**  
+   - This will:
+     - Run `xelatex` twice to ensure proper references.
+     - Move the output PDF to the `output` folder.
+     - Delete all non-PDF files from `output`.
 
-- The compiled PDF will be located in the `output` folder.
-- Temporary files (e.g., `.aux`, `.log`) will be deleted automatically.
+3. **View the Output:**
+   - The final `cv.pdf` will be located in the `output` subfolder within the selected directory.
 
-### Troubleshooting
+### 🧑‍💻 Expected Inputs:
+- A directory containing:
+  - `cv.tex` (LaTeX CV file)
+  - `script.ps1` (PowerShell script)
 
-- **PowerShell Errors**: If the PowerShell script fails to run, ensure PowerShell’s execution policy allows scripts to run. Temporarily set the execution policy to "Bypass" with:
-  ```bash
-  Set-ExecutionPolicy Bypass -Scope Process
+### 📤 Program Output:
+- A cleaned and compiled PDF version of your CV in:
+  ```
+  [your-selected-folder]\output\cv.pdf
   ```
 
-- **File Not Found**: If the Python GUI reports missing files (`cv.tex` or `script.ps1`), ensure both are present in the selected directory.
+### ⚙️ Configurable Settings:
+There are no configurable options exposed to the user. The tool is intentionally simple and minimal.
 
-### Customization
+---
 
-- Edit the `cv.tex` file to include your CV content, formatting, and structure.
-- Adjust the `script.ps1` file to modify the output directory or include additional LaTeX compilation steps if needed.
+## 5. Use Cases and Real-World Examples
+
+### 📌 Use Case 1: Update and Compile a LaTeX CV
+**Scenario:** You’ve just updated your CV in `cv.tex`.  
+**Action:** Use this tool to quickly compile and generate the updated PDF.  
+**Expected Output:** `output/cv.pdf` containing the latest version.
+
+---
+
+### 📌 Use Case 2: Streamline Portfolio Submissions
+**Scenario:** You're submitting your CV for a job application and need a quick PDF with no clutter.  
+**Action:** Run the compiler to generate a clean PDF, free of log files and other build artifacts.  
+**Expected Output:** A polished `cv.pdf` file ready to send.
+
+---
+
+### 📌 Use Case 3: Non-technical User Needs to Compile a LaTeX CV
+**Scenario:** A designer or writer who doesn’t use the command line needs to generate a LaTeX CV.  
+**Action:** Launch the GUI, select the folder, and click one button.  
+**Expected Output:** A correctly compiled CV PDF without needing technical help.
+
+---
+
+## 6. Disclaimer & Important Notices
+
+- This repository and its contents may be updated at any time without notice.  
+- Future changes may render portions of this README obsolete.  
+- No guarantees are made regarding functionality, compatibility, or correctness.  
+- The program and all associated scripts are provided **as-is**.
+
+---
+
+## 7. Tone, Style, and Presentation Guidelines
+
+- Clear and easy-to-follow instructions suitable for non-technical users.  
+- No programming knowledge is required to use the software.  
+- Clean, structured layout using headings, lists, and code blocks to enhance readability.  
+- Objective and impersonal tone throughout the documentation.  
+- Visual enhancements (like screenshots) are suggested only if helpful.
